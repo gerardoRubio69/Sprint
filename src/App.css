@@ -1,38 +1,133 @@
-.App {
-  text-align: center;
+/* App.css */
+body {
+  background-color: #f4f5f7;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #172b4d;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* --- Cabecera del Sprint --- */
+.sprint-header {
+  background-color: #ffffff;
+  padding: 20px 25px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  margin-bottom: 25px;
+  border-left: 5px solid #0052cc;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.sprint-header h1 {
+  margin: 0 0 10px 0;
+  font-size: 1.8rem;
+}
+
+.sprint-goal {
+  color: #5e6c84;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.sprint-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  color: #42526e;
+}
+
+/* --- Historias de Usuario --- */
+.historias-container {
   display: flex;
   flex-direction: column;
+  gap: 20px;
+}
+
+.historia-card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.historia-header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #dfe1e6;
+  padding-bottom: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.historia-header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #172b4d;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.puntos-badge {
+  background-color: #eae6ff;
+  color: #403294;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 0.9rem;
 }
+
+/* --- Grilla de Tareas (Sub-tasks) --- */
+.tareas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.tarea-card {
+  background-color: #fafbfc;
+  border: 1px solid #dfe1e6;
+  border-radius: 6px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarea-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.tarea-card h3 {
+  font-size: 1rem;
+  margin: 0 0 15px 0;
+  color: #253858;
+}
+
+.tarea-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #5e6c84;
+  margin-bottom: 15px;
+}
+
+/* --- Etiquetas de Estados (Colores Dinámicos) --- */
+.estado-tarea, .badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.status-por-hacer { background-color: #dfe1e6; color: #42526e; }
+.status-en-progreso, .en-progreso { background-color: #deebff; color: #0747a6; }
+.status-en-revision { background-color: #fffae6; color: #ff8b00; }
+.status-terminado { background-color: #e3fcef; color: #006644; }
