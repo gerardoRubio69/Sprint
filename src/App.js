@@ -2,14 +2,14 @@ import React from 'react';
 import './App.css';
 
 function App() {
-  // Datos actualizados: Reflejando el final del sprint y los imprevistos
   const sprintPlanning = {
     id: "SPRINT-01",
     nombre: "Sprint 1: Fundamentos de Compra",
     objetivo: "Permitir al usuario explorar productos, usar filtros y agregar al carrito.",
     fechaInicio: "2026-10-12",
     fechaFin: "2026-10-26",
-    estado: "En Revisión Final",
+    estado: "Completado",
+    retrospectiva: "¡Sprint exitoso! El equipo logró entregar los 13 puntos planificados, resolvió caídas de servidor usando mocks y aportó valor extra integrando el cálculo de impuestos a tiempo.",
     historias: [
       {
         idHistoria: "HU-001",
@@ -39,13 +39,12 @@ function App() {
         tareas: [
           { idTarea: "T-301", titulo: "Configurar gestor de estado para carrito", estado: "Terminado", asignadoA: "Luis", horas: 5 },
           { idTarea: "T-302", titulo: "Lógica para calcular subtotal", estado: "Terminado", asignadoA: "Luis", horas: 3 },
-          { idTarea: "T-303", titulo: "[NUEVO] Añadir desglose de IVA (16%) al total", estado: "En Progreso", asignadoA: "Luis", horas: 2 }
+          { idTarea: "T-303", titulo: "[NUEVO] Añadir desglose de IVA (16%) al total", estado: "Terminado", asignadoA: "Luis", horas: 2 } // ¡Tarea completada!
         ]
       }
     ]
   };
 
-  // Lógica avanzada: Calcular progreso del Sprint automáticamente
   const calcularProgreso = () => {
     let totalTareas = 0;
     let tareasTerminadas = 0;
@@ -71,11 +70,17 @@ function App() {
       <header className="sprint-header">
         <div className="header-top">
           <h1>{sprintPlanning.nombre}</h1>
-          <span className="badge status-en-revision-final">{sprintPlanning.estado}</span>
+          <span className="badge status-completado">{sprintPlanning.estado}</span>
         </div>
         <p className="sprint-goal">🎯 Objetivo: {sprintPlanning.objetivo}</p>
         
-        {/* Nueva sección: Barra de progreso */}
+        {/* Banner de Retrospectiva visible solo al llegar al 100% */}
+        {progreso.porcentaje === 100 && (
+          <div className="retro-banner">
+            <strong>🎉 Sprint Review:</strong> {sprintPlanning.retrospectiva}
+          </div>
+        )}
+
         <div className="progreso-container">
           <div className="progreso-texto">
             <span>Progreso del Sprint</span>
